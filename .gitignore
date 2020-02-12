@@ -1,3 +1,5 @@
+data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -111,7 +113,7 @@ env.bak/
 venv.bak/
 
 # Spyder project settings
-.spyderproject
+.spyderproject5:19.03.6~2.2.rc2-0~ubuntu-eoan
 .spyproject
 
 # Rope project settings

@@ -2,11 +2,14 @@
 Aerosol concentration modeling based on satellite data
 
 Log in to https://ecmwf.int
+
 Save credentials at https://api.ecmwf.int/v1/key/ to `$HOME/.ecmwfapirc`
 
 Load data or src code:
 1. Configure as you wish in `configuration.yml`
 2. Run `python main.py`
+
+Save credentials at https://api.ecmwf.int/v1/key/ to $HOME/.ecmwfapirc
 
 If using conda:
 ```

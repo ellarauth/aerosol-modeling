@@ -9,8 +9,6 @@ Run src code (load data etc):
 1. Configure as you wish in `configuration.yml`
 2. Run `python main.py`
 
-Save credentials at https://api.ecmwf.int/v1/key/ to $HOME/.ecmwfapirc
-
 If using conda:
 ```
 git clone https://github.com/hd4niel/aerosol-modeling.git

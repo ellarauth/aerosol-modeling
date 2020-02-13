@@ -1,0 +1,14 @@
+
+data:
+    n100: data/n100_concentrations
+    temp: data/temperature
+    co: data/carbonmonoxide
+
+load_data:
+    n100: True
+    temp: True
+    co: False
+
+steps:
+    preprocessing: False
+    fit_model: False

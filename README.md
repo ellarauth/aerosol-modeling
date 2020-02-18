@@ -26,3 +26,13 @@ Remove environment
 ```
 conda env remove --name inar
 ```
+In case of problems with the environment:
+```
+conda create -n inar python=3.5.6
+conda install -c anaconda pyyaml
+conda install -c conda-forge cfgrib
+conda install -c conda-forge ecmwf-api-client
+conda install -c conda-forge jupyterlab
+etc ...
+conda activate inar
+```

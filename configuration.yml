@@ -1,14 +1,22 @@
 
+raw:
+    n100: raw/n100
+    cams: raw/cams
+
 data:
-    n100: data/n100_concentrations
-    temp: data/temperature
-    co: data/carbonmonoxide
+    n100: data/n100
+    cams: data/cams
+    final: data/final
 
 load_data:
-    n100: True
-    temp: True
-    co: False
+    n100: False
+    cams: False
 
-steps:
-    preprocessing: False
-    fit_model: False
+preprocess:
+    n100: False
+    cams: False
+    unite: False
+
+cities: data/city_locations.csv
+
+fit_model: False

@@ -3,6 +3,7 @@ from subprocess import call
 import xarray as xr
 import pandas as pd
 import os
+import numpy as np
 
 
 def preprocess_n100(n100_raw, n100_processed, processed_info):
@@ -97,3 +98,20 @@ def unite_data(n100_data, cams_data, cities_info, final_data):
         cams = pd.read_csv(cams_data + '/' + city + '_CAMS.csv', index_col='date')
         df = pd.concat([n100, cams], join='inner', axis=1)
         df.to_csv(final_data + '/' + city + '.csv')
+
+def merge_final_files(cities_info, final_data):
+
+  col_names = ['date', 'concentration', 't', 'co', 'city', 'latitude', 'longitude']
+  all = pd.DataFrame(columns = col_names)
+  cities = pd.read_csv(cities_info)
+
+  for i, row in cities.iterrows():
+    city_name = row['city']
+    data = pd.read_csv(final_data + '/' + city_name + '.csv')
+    n = len(data.index)
+    data = data.assign(city = pd.Series(np.repeat(city_name, n)))
+    data = data.assign(latitude = pd.Series(np.repeat(row['latitude'], n)))
+    data = data.assign(longitude = pd.Series(np.repeat(row['longitude'], n)))
+    all = all.append(data)
+  
+  all.to_csv(final_data + '/all_merged.csv', index = False)

@@ -1,7 +1,7 @@
 
 import yaml
 from src.download_data import retrieve_n100, retrieve_cams_reanalysis
-from src.preprocess_data import preprocess_n100, preprocess_cams, unite_data
+from src.preprocess_data import preprocess_n100, preprocess_cams, unite_data, merge_final_files
 
 
 if __name__ == '__main__':
@@ -25,4 +25,7 @@ if __name__ == '__main__':
     
     if config['preprocess']['unite']:
         unite_data(config['data']['n100'], config['data']['cams'], config['cities'], config['data']['final'])
+    
+    if config['preprocess']['merge']:
+        merge_final_files(config['cities'], config['data']['final'])
 

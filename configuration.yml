@@ -16,7 +16,8 @@ preprocess:
     n100: False
     cams: False
     unite: False
-
+    merge: False
+    
 cities: data/city_locations.csv
 
 fit_model: False

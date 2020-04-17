@@ -10,7 +10,7 @@
 % 7 = Time zone of the data
 % 8 = Measurement device
 82.492, -62.508, 75	ALE	Alert, Canada				Polar					UTC-4		smps
-12.99, 50.57, 545	ABZ	Annaberg-Buchholz, Germany		Urban background			UTC+1		smps
+50.57, 12.99, 545	ABZ	Annaberg-Buchholz, Germany		Urban background			UTC+1		smps
 58.80, 17.38, 25	ASP	Aspvreten, Sweden			Rural					UTC+1		dmps
 -25.5, 25.8, 1400	BOT	Botsalano, South Africa			Rural					UTC+2		dmps
 53.00, 7.95, 17		BSL	Bösel (Südoldenburg), Germany		Rural, regional background		UTC+1		smps

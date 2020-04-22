@@ -81,18 +81,20 @@ https://ads.atmosphere.copernicus.eu/
 
 https://git-lfs.github.com/
 
+## Optional large file tracking
+
 Install (debian):
 ```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install git-lfs
 ```
 
-List files
-```
-git lfs ls-files
-```
-
 To download them (after installing lfs)
 ```
 git lfs pull
+```
+
+List files
+```
+git lfs ls-files
 ```

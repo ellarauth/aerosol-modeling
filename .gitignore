@@ -1,4 +1,5 @@
-raw/
+# Opened grib files
+*.idx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

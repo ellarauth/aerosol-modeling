@@ -76,3 +76,23 @@ In situ by INAR
 Faster transfer speeds for future reference, released recently
 
 https://ads.atmosphere.copernicus.eu/
+
+### Large File Storage
+
+https://git-lfs.github.com/
+
+Install (debian):
+```
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+```
+
+List files
+```
+git lfs ls-files
+```
+
+To download them (after installing lfs)
+```
+git lfs pull
+```

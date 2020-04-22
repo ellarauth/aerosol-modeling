@@ -100,18 +100,22 @@ def unite_data(n100_data, cams_data, cities_info, final_data):
         df.to_csv(final_data + '/' + city + '.csv')
 
 def merge_final_files(cities_info, final_data):
+    """
+       Create a single data files from all cities' final data
+    """
+    col_names = ['date', 'city', 'latitude', 'longitude', 'concentration', 
+                 't', 'co', 'no', 'no2', 'so2' , 'c10h16', 'c5h8']
+    all = pd.DataFrame(columns = col_names)
+    cities = pd.read_csv(cities_info)
 
-  col_names = ['date', 'concentration', 't', 'co', 'city', 'latitude', 'longitude']
-  all = pd.DataFrame(columns = col_names)
-  cities = pd.read_csv(cities_info)
+    for i, row in cities.iterrows():
+        city_name = row['city']
+        data = pd.read_csv(final_data + '/' + city_name + '.csv')
+        n = len(data.index)
+        data = data.assign(city = pd.Series(np.repeat(city_name, n)))
+        data = data.assign(latitude = pd.Series(np.repeat(row['latitude'], n)))
+        data = data.assign(longitude = pd.Series(np.repeat(row['longitude'], n)))
+        all = all.append(data)
 
-  for i, row in cities.iterrows():
-    city_name = row['city']
-    data = pd.read_csv(final_data + '/' + city_name + '.csv')
-    n = len(data.index)
-    data = data.assign(city = pd.Series(np.repeat(city_name, n)))
-    data = data.assign(latitude = pd.Series(np.repeat(row['latitude'], n)))
-    data = data.assign(longitude = pd.Series(np.repeat(row['longitude'], n)))
-    all = all.append(data)
-  
-  all.to_csv(final_data + '/all_merged.csv', index = False)
+    all = all[col_names]
+    all.to_csv(final_data + '/all_merged.csv', index = False)

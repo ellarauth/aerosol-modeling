@@ -1,10 +1,14 @@
 
+import signal
 from subprocess import call
 import pandas as pd
 import calendar
 from ecmwfapi import ECMWFDataServer
 server = ECMWFDataServer()
 
+
+def handler(signum, frame):
+    raise Exception("Time exceeded!")
 
 def retrieve_n100(location):
     """
@@ -51,7 +55,20 @@ def retrieve_cams_city(cams_city_location, latitude, longitude, yearStart, yearE
             lastDate = '%04d%02d%02d' % (year, month, numberOfDays)
             target = cams_city_location + "/cams-reanalysis_daily_%04d%02d.grb" % (year, month)
             requestDates = (startDate + "/TO/" + lastDate)
-            cams_reanalysis_request(requestDates, target, latitude, longitude)
+            
+            while True:
+                # Register unix signal function handler
+                signal.signal(signal.SIGALRM, handler)
+                # Define retrieval timeout (20min)
+                signal.alarm(1200)
+                try:
+                    cams_reanalysis_request(requestDates, target, latitude, longitude)
+                    break
+                except Exception as e:
+                    # catch timeout or any other mars related errors
+                    print(e)
+                    print("Trying again ...")
+
  
 def cams_reanalysis_request(requestDate, target, latitude, longitude):
     """      
@@ -68,7 +85,14 @@ def cams_reanalysis_request(requestDate, target, latitude, longitude):
         "type": "an", # analysis
         "date": requestDate,
         "time": "00/TO/23", # All hours containg data, 0000/0600/1200/1800
-        "param": "130/210123", # 130: temperature [K], 210123: CO [kg(CO)/kg(air)]
+        "param": "130/210123/217027/210121/210122/217049/217016", 
+        # 130: Temperature [K]
+        # 210123: CO [kg(CO)/kg(air)]
+        # 217027: NO [kg(NO)/kg(air)]
+        # 210121: NO2 [kg(NO2)/kg(air)]
+        # 210122: SO2 [kg(SO2)/kg(air)]
+        # 217049: Terpenes [kg(Terpenes)/kg(air)]
+        # 217016: Isoprene [kg(Isoprene)/kg(air)]
         "levtype": "ml", # Model level in CAMS reanalysis: L60
         "levelist": "60", # Highest model value possible: values 10m above ground
         "target": target,

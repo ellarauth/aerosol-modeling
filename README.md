@@ -49,6 +49,10 @@ Reanalysis data documentation
 
 https://confluence.ecmwf.int/display/CKB/CAMS%3A+Reanalysis+data+documentation
 
+Data
+
+https://apps.ecmwf.int/data-catalogues/cams-reanalysis/?stream=oper&levtype=ml&expver=eac4&type=an&class=mc
+
 Efficiently retrieve daily data
 
 https://confluence.ecmwf.int/display/WEBAPI/CAMS+Reanalysis+daily+retrieval+efficiency
@@ -66,3 +70,9 @@ https://confluence.ecmwf.int/pages/viewpage.action?pageId=58131166
 Datasource:
 
 In situ by INAR
+
+### Retrieve data on disks
+
+Faster transfer speeds for future reference, released recently
+
+https://ads.atmosphere.copernicus.eu/
